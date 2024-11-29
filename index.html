@@ -17,9 +17,24 @@
     </header>
     <section class="main">
         <div class="form">
-            <h1 class="text-white text-2xl font-regular text-center mb-1 ">
-                Build Your Player
-            </h1>
+            <div class="flex justify-between items-center ">
+                <h1 class="text-white text-2xl font-regular text-center mb-1 ">
+                    Build Your Player
+                </h1>
+                <div>
+                    <select 
+                      id="squad-formation" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    >
+                      <option value="">Squad</option>
+                      <option value="4-3-3">4-3-3</option>
+                      <option value="4-4-2">4-4-2</option>
+                     
+                    </select>
+                  </div>
+            </div>
+
             <form class="max-w-md mx-auto  space-y-4">
 +                <div>
                   <label for="player-name" class="block text-white font-medium mb-2">Player Name</label>
@@ -41,15 +56,19 @@
                   >
                     <option value="">Select position</option>
                     <option value="GK">GK</option>
-                    <option value="CB">CB</option>
+                    <option value="LCB">LCB</option>
+                    <option value="RCB">RCB</option>
                     <option value="LB">LB</option>
                     <option value="RB">RB</option>
+                    <option value="LCM">LCM</option>
                     <option value="CM">CM</option>
+                    <option value="RCM">RCM</option>
                     <option value="LW">LW</option>
                     <option value="RW">RW</option>
                     <option value="RM">RM</option>
                     <option value="LM">LM</option>
                     <option value="ST">ST</option>
+                    
                   </select>
                 </div>
               
@@ -181,71 +200,103 @@
                     Add Player
                   </button>
                 </div>
+                
               </form>
   
         </div>
-        <div class="squad">
-            <div class="frs">
-                
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
-                
-            
+        <div class="squad squad_4_3_3 hidden">
+            <div class="frs_4_3_3">
+                <div class="card" position="LW"></div>
+                <div class="card" position="ST"></div>
+                <div class="card" position="RW"></div>
             </div>
-            <div class="mds">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
+            <div class="mds_4_3_3">
+                <div class="card" position="LCM"></div>
+                <div class="card" position="CM"></div>
+                <div class="card" position="RCM"></div>
             </div>
-            <div class="dfs">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
-                    <img src="assets/card.png" alt="">
+            <div class="dfs_4_3_3">
+                <div class="card" position="LB"></div>
+                <div class="card" position="LCB"></div>
+                <div class="card" position="RCB"></div>
+                <div class="card" position="RB"></div>
             </div>
-            <div class="gk">
-                <img src="assets/card.png" alt="">
+            <div class="gk_4_3_3">
+                <div class="card" position="GK"></div>
             </div>
         </div>
+        
+        <div class="squad squad_4_4_2">
+            <div class="frs_4_4_2">
+                <div class="card" position="ST"></div>
+                <div class="card" position="ST"></div>
+            </div>
+            <div class="mds_4_4_2">
+                <div class="card" position="LM"></div>
+                <div class="card" position="LCM"></div>
+                <div class="card" position="RCM"></div>
+                <div class="card" position="RM"></div>
+            </div>
+            <div class="dfs_4_4_2">
+                <div class="card" position="LB"></div>
+                <div class="card" position="LCB"></div>
+                <div class="card" position="RCB"></div>
+                <div class="card" position="RB"></div>
+            </div>
+            <div class="gk_4_4_2">
+                <div class="card" position="GK"></div>
+            </div>
+        </div>
+        <!-- <div class="squad squad_4_3_3 hidden">
+            <div class="frs_4_3_3">
+                <img src="assets/cardv2.jpg" position="LW" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RW" alt="" class="card">
+            </div>
+            <div class="mds_4_3_3">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+            </div>
+            <div class="dfs_4_3_3">
+                <img src="assets/cardv2.jpg" position="LB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RB" alt="" class="card">
+            </div>
+            <div class="gk_4_3_3">
+                <img src="assets/cardv2.jpg" position="GK" alt="" class="card">
+            </div>
+        </div>
+        
+        <div class="squad squad_4_4_2">
+            <div class="frs_4_4_2">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+            </div>
+            <div class="mds_4_4_2">
+                <img src="assets/cardv2.jpg" position="LM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RM" alt="" class="card">
+            </div>
+            <div class="dfs_4_4_2">
+                <img src="assets/cardv2.jpg" position="LB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RB" alt="" class="card">
+            </div>
+            <div class="gk_4_4_2">
+                <img src="assets/cardv2.jpg" position="GK" alt="" class="card">
+            </div>
+        </div> -->
         <div class="sub ">
-            <!-- <div class="card">
-                <div class="s1">
-                    <h1 class="rating">90</h1>
-                    <p>CF</p>
-                </div>
-                <div class="s5">
-                    <p class="name">Messi</p>
-                </div>
-                <div class="s6">
-                    <p>PAC</p>
-                    <p>SHO</p>
-                    <p>PAS</p>
-                    <p>DRI</p>
-                    <p>DEF</p>
-                    <p>PHY</p>
-                </div>
-                <div class="s7">
-                    <p>89</p>
-                    <p>78</p>
-                    <p>96</p>
-                    <p>99</p>
-                    <p>45</p>
-                    <p>32</p>
-                </div>
-            </div> -->
-            <!-- <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt="">
-            <img src="assets/card.png" alt=""> -->
+     
             
         </div>
     </section>
     
 </body>
 <script src="script.js"></script>
+
 </html>

@@ -6,64 +6,82 @@
     box-sizing: border-box;
 }
 .card{
-    height: 30vh;
+    height: 23vh;
     width: 20vh;
     background-image: url(assets/empty_card.png);
     background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     display: grid;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows: repeat(18,1fr);
 }
+
 .card .s1{
     height: 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    grid-column: 3/4;
+    grid-column: 3/6;
     grid-row: 4/5;
+}
+.card .plpic{
+    
+    height: 60px;
+    width:auto;
+    grid-column: 5/13;
+    grid-row: 6/11;
 }
 
 .card .s5{
-    height: 6px;
+
     grid-column: 3/11;
     grid-row: 11/14;
     display: flex;
     justify-content: center;
 }
 .card .s6{
-
-    grid-column: 4/8;
-    grid-row: 16/13;
+    
+    grid-column: 6/8;
+    grid-row: 13/14;
     display: flex;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
+    text-align: center;
 }
 .card .s7{
     height: 6px;
-    grid-column: 4/8;
-    grid-row: 14/16;
+    grid-column: 6/8;
+    grid-row: 14/17;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 7px;
+    text-align: center;
+}
+.s1 h1{
+    font-size: 12px;
+    font-weight: bold;  
 }
 .s1 p{
     font-size: 8px;
     font-weight: bold;
 }
 .s5 p{
-    padding-top: 6px;
     font-size: 10px;
     font-family: 'Oswald', sans-serif;
 
     
 }
 .s6 p{
-    font-size: 7px;
+    font-size: 6px;
+    font-weight: bold;
     font-family: 'Oswald', sans-serif;
 }
 .s7 p{
-    font-size: 8px;
+    font-size: 7px;
     font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    text-align: center;
 }
 .rating{
     font-weight: bold;
@@ -100,7 +118,7 @@ header .icons {
 }
 
 .main {
-    height: 130vh;
+    height: 150vh;
     width: 100%;
     background-color: #2B2929;
     display: grid;
@@ -140,7 +158,20 @@ header .icons {
     width: auto;
 }
 
-.frs {
+
+
+.frs_4_4_2 img,
+.frs_4_3_3 img,
+.mds_4_4_2 img,
+.mds_4_3_3 img,
+.dfs_4_4_2 img,
+.dfs_4_3_3 img,
+.gk_4_4_2 img ,
+.gk_4_3_3 img{
+    height: 20vh;
+    width: auto;
+}
+.frs_4_3_3 {
     grid-row: 1/2;
     grid-column: 1/7;
     display: grid;
@@ -149,39 +180,64 @@ header .icons {
     gap: 80px;
 }
 
-.frs img,
-.mds img,
-.dfs img,
-.gk img {
-    height: 20vh;
-    width: auto;
-}
-
-.mds {
+.mds_4_3_3 {
     grid-row: 2/3;
     grid-column: 1/7;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
-    gap: 80px;
+    gap: 70px;
 }
 
-.dfs {
+.dfs_4_3_3 {
     grid-row: 3/4;
     grid-column: 1/7;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: auto;
-    gap: 90px;
+    gap: 50px;
 }
 
-.gk {
+.gk_4_3_3 {
     grid-row: 4/5;
     grid-column: 1/7;
     margin: auto;
 }
 
+.frs_4_4_2 {
+    grid-row: 1/2;
+    grid-column: 1/7;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    gap: 50px;
+ 
+    
+}
 
+.mds_4_4_2 {
+    grid-row: 2/3;
+    grid-column: 1/7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    gap: 70px;
+}
+
+.dfs_4_4_2 {
+    grid-row: 3/4;
+    grid-column: 1/7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    gap: 70px;
+}
+
+.gk_4_4_2 {
+    grid-row: 4/5;
+    grid-column: 1/7;
+    margin: auto;
+}
 
 .stadium {
     height: 100%;
@@ -200,6 +256,7 @@ header .icons {
     }
 
     .squad {
+        padding-top: 20px;
         grid-column: 1/2;
         grid-row: 1/2;
         background-image: url(assets/stadium.jpg);
@@ -211,6 +268,10 @@ header .icons {
         gap: 20px;
     }
 
+    .squad img{
+        height:15vh;
+        width: auto;
+    }
 
 
     .sub {
@@ -230,5 +291,41 @@ header .icons {
     .sub img {
         height: 20vh;
         width: auto;
+    }
+    .dfs_4_3_3 , .dfs_4_4_2{
+        gap: 20px;
+    }
+    .mds_4_3_3 , .mds_4_4_2{
+        gap: 20px;
+    }
+    .card{
+        height: 20vh;
+        width:15vh;
+        background-image: url(assets/empty_card.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+        grid-template-rows: repeat(18,1fr);
+    }
+    .s5 p{
+        font-size: 9px;
+        font-family: 'Oswald', sans-serif;
+    
+        
+    }
+
+    .s6 p{
+        font-size: 5px;
+        font-weight: bold;
+        letter-spacing: 0;
+        font-family: 'Oswald', sans-serif;
+    }
+    .s7 p{
+        font-size: 6px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: bold;
+        text-align: center;
     }
 }
