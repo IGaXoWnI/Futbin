@@ -74,7 +74,7 @@ document.getElementById("submit_btn").addEventListener("click", () => {
     };
 
     if(position==="GK"){
-        const player = { name: player_name , flag_pic : flag_pic, club_pic:club_pic, player_pic:player_pic, rating: player_rating, position : position, stats : [
+        const player = { name: player_name , flag : flag_pic, club:club_pic, player_pic:player_pic, rating: player_rating, position : position, stats : [
             {
                 reflexes : reflexes,
                 handling : handling,
@@ -191,54 +191,91 @@ document.getElementById("submit_btn").addEventListener("click", () => {
         });
     
 
+        // Clear the bench container first
+        bench_container.innerHTML = '';
+        
         data_bench.forEach((bench_player) => {
-            const stats = bench_player.position === "GK"
-                ? 
-                `
-                    <p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>
-                `
-                : 
-                `
-                    <p>PAC</p><p>SHO</p><p>PAS</p><p>DRI</p><p>DEF</p><p>PHY</p>
-                `;
-            const statsValues = bench_player.position === "GK"
-                ?
-                 `
-                    <p>${bench_player.stats[0].reflexes}</p>
-                    <p>${bench_player.stats[0].handling}</p>
-                    <p>${bench_player.stats[0].kicking}</p>
-                    <p>${bench_player.stats[0].positioning}</p>
-                    <p>${bench_player.stats[0].diving}</p>
-                    <p>${bench_player.stats[0].communication}</p>
-                `
-                : `
-                    <p>${bench_player.stats[0].pace}</p>
-                    <p>${bench_player.stats[0].shooting}</p>
-                    <p>${bench_player.stats[0].passing}</p>
-                    <p>${bench_player.stats[0].dribbling}</p>
-                    <p>${bench_player.stats[0].defence}</p>
-                    <p>${bench_player.stats[0].physique}</p>
-                `;
-    
-            bench_container.innerHTML += `
-                <div  class="card card_bench">
-                    <div class="rating_position_logo_flag">
-                        <p>${bench_player.rating}</p>
-                        <p>${bench_player.position}</p>
-                        <div class="flag_club">
-                            <img class="club" src="${bench_player.club}" alt="Club Logo">
-                            <img class="flag" src="${bench_player.flag}" alt="Flag">
-                        </div>
+            // Create a new div element instead of using innerHTML
+            const benchCard = document.createElement('div');
+            benchCard.className = 'card card_bench';
+            
+            // Add the card content
+            benchCard.innerHTML = `
+                <div class="rating_position_logo_flag">
+                    <p>${bench_player.rating}</p>
+                    <p>${bench_player.position}</p>
+                    <div class="flag_club">
+                        <img class="club" src="${bench_player.club}" alt="Club Logo">
+                        <img class="flag" src="${bench_player.flag}" alt="Flag">
                     </div>
-                    <div class="playerpic">
-                        <img class="plpic" src="${bench_player.player_pic}" alt="Player Image">
-                    </div>
-                    <div class="name">
-                        <p>${bench_player.name}</p>
-                    </div>
-                    <div class="stats_name">${stats}</div>
-                    <div class="stats_value">${statsValues}</div>
-                </div>`;
+                </div>
+                <div class="playerpic">
+                    <img class="plpic" src="${bench_player.player_pic}" alt="Player Image">
+                </div>
+                <div class="name">
+                    <p>${bench_player.name}</p>
+                </div>
+                <div class="stats_name">${bench_player.position === "GK" ? 
+                    `<p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>` : 
+                    `<p>PAC</p><p>SHO</p><p>PAS</p><p>DRI</p><p>DEF</p><p>PHY</p>`}</div>
+                <div class="stats_value">${bench_player.position === "GK" ?
+                    `<p>${bench_player.stats[0].reflexes}</p>
+                     <p>${bench_player.stats[0].handling}</p>
+                     <p>${bench_player.stats[0].kicking}</p>
+                     <p>${bench_player.stats[0].positioning}</p>
+                     <p>${bench_player.stats[0].diving}</p>
+                     <p>${bench_player.stats[0].communication}</p>` :
+                    `<p>${bench_player.stats[0].pace}</p>
+                     <p>${bench_player.stats[0].shooting}</p>
+                     <p>${bench_player.stats[0].passing}</p>
+                     <p>${bench_player.stats[0].dribbling}</p>
+                     <p>${bench_player.stats[0].defence}</p>
+                     <p>${bench_player.stats[0].physique}</p>`}</div>
+            `;
+            
+
+            benchCard.addEventListener('click', () => {
+                bench_container.classList.toggle('scale-110');
+            
+                let selected_bench = bench_player.name;
+                
+            
+                if (localStorage.getItem("selected_bench") === selected_bench) {
+                  
+                    localStorage.removeItem("selected_bench");
+                } else {
+                    localStorage.setItem("selected_bench", selected_bench);
+                }
+            });
+            
+         
+            bench_container.appendChild(benchCard);
+
+            cards.forEach((card)=>{
+                card.addEventListener("click" , ()=>{
+                    let name = card.querySelector('.name');
+                    let clearName = name.textContent.trim();
+                    if(clearName){
+                        let selectedplayersquad = data_squad.find(player => player.name === clearName);
+                        let selected_squad = selectedplayersquad.name;   
+                        if(localStorage.getItem("selected_squad")===selected_squad){
+                            localStorage.removeItem("selected_squad");
+                        }else{
+                            localStorage.setItem("selected_squad" , selected_squad);
+                        }
+                        
+                    }
+                    else{
+                        console.log("no data");
+                    }
+            
+                    card.classList.toggle('scale-110');
+                    
+                    
+                })
+                
+            })
+            
         });
 
 
@@ -249,12 +286,58 @@ document.getElementById("submit_btn").addEventListener("click", () => {
         
     }
 
+    renderData();
 
 
 
+    function swapPlayers() {
+        const selected_bench = localStorage.getItem("selected_bench");
+        const selected_squad = localStorage.getItem("selected_squad");
 
-let cards_bench = localStorage.getItem("cards_bench");
-console.log(cards_bench);
+        // Check if both selections exist
+        if (!selected_bench || !selected_squad) {
+            alert("Please select one player from the bench and one from the squad.");
+            return;
+        }
+
+        // Get current data
+        let data_bench = JSON.parse(localStorage.getItem("data_bench") || "[]");
+        let data_squad = JSON.parse(localStorage.getItem("data_squad") || "[]");
+
+        // Find players
+        const benchPlayer = data_bench.find(player => player.name === selected_bench);
+        const squadPlayer = data_squad.find(player => player.name === selected_squad);
+
+        // Validate positions match
+        if (benchPlayer.position !== squadPlayer.position) {
+            alert("Players must have the same position to swap!");
+            return;
+        }
+
+        // Remove players from their current arrays
+        data_bench = data_bench.filter(player => player.name !== selected_bench);
+        data_squad = data_squad.filter(player => player.name !== selected_squad);
+
+        // Add players to their new arrays
+        data_bench.push(squadPlayer);
+        data_squad.push(benchPlayer);
+
+        // Update localStorage
+        localStorage.setItem("data_squad", JSON.stringify(data_squad));
+        localStorage.setItem("data_bench", JSON.stringify(data_bench));
+
+        // Clear selections
+        localStorage.removeItem("selected_bench");
+        localStorage.removeItem("selected_squad");
+
+        // Refresh the page to show changes
+        location.reload();
+    }
+
+    // Add event listener for swap button
+    document.getElementById("swap-button").addEventListener("click", swapPlayers);
+
+swapPlayers();
 
 
 
@@ -273,3 +356,4 @@ document.addEventListener("DOMContentLoaded", renderData);
 
 
 
+    
