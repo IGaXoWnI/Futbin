@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="assets/logo.png" alt="">
+        <div class="icons">
+            <img src="assets/search.svg" alt="">
+            <img src="assets/user.svg" alt="">
+        </div>
+    </header>
+    <section class="main">
+        <div class="form">
+            <div class="flex justify-between items-center ">
+                <h1 class="text-white text-2xl font-regular text-center mb-1 ">
+                    Build Your Player
+                </h1>
+                <div>
+                    <select 
+                      id="squad-formation" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    >
+                      <option value="">Squad</option>
+                      <option value="4-3-3">4-3-3</option>
+                      <option value="4-4-2">4-4-2</option>
+                     
+                    </select>
+                  </div>
+            </div>
+
+            <form class="max-w-md mx-auto  space-y-4">
++                <div>
+                  <label for="player-name" class="block text-white font-medium mb-2">Player Name</label>
+                  <input 
+                    type="text" 
+                    id="player-name" 
+                    placeholder="Enter player name"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
+              
+                <div>
+                  <label for="player-position" class="block text-white font-medium mb-2">Position</label>
+                  <select 
+                    id="player-position" 
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  >
+                    <option value="">Select position</option>
+                    <option value="GK">GK</option>
+                    <option value="LCB">LCB</option>
+                    <option value="RCB">RCB</option>
+                    <option value="LB">LB</option>
+                    <option value="RB">RB</option>
+                    <option value="LCM">LCM</option>
+                    <option value="CM">CM</option>
+                    <option value="RCM">RCM</option>
+                    <option value="LW">LW</option>
+                    <option value="RW">RW</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="ST">ST</option>
+                    
+                  </select>
+                </div>
+              
+                <div>
+                  <label for="player-rating" class="block text-white font-medium mb-2">Rating</label>
+                  <input 
+                    name="Rating"
+                    type="number" 
+                    id="player-rating" 
+                    placeholder="Enter rating (0-100)" 
+                    min="0" 
+                    max="100"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
+              
+                <div>
+                  <label for="player-stats" class="block text-white font-medium mb-2">Player Stats</label>
+                  <div id="statspl" class="grid grid-cols-2 gap-4">
+                    <input 
+                      id="pace"
+                      name="pace"
+                      type="number" 
+                      placeholder="Pace" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                    id="shooting"
+                    name="shooting"
+                      type="number" 
+                      placeholder="Shooting" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                    id="passing"
+                    name="passing"
+                      type="number" 
+                      placeholder="Passing" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                    id="dribbling"
+                    name="dribbling"
+                      type="number" 
+                      placeholder="Dribbling" 
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                    name="defence"
+                    id="defence"
+                    type="number" 
+                    placeholder="Defence" 
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                  <input 
+                  name="physique"
+                  id="physique"
+                  type="number" 
+                  placeholder="Physique" 
+                  class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+                  </div>
+                  <div id="statsgk" class="hidden grid grid-cols-2 gap-4">
+                    <input 
+                      type="number" 
+                      placeholder="Reflexes" 
+                      id="Reflexes"
+                      name="Reflexes"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                      type="number" 
+                      placeholder="Handling" 
+                      id="Handling"
+                      name="Handling"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                      type="number" 
+                      placeholder="Kicking" 
+                      name="Kicking"
+                      id="Kicking"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                      type="number" 
+                      placeholder="Positioning" 
+                      id="Positioning"
+                      name="Positioning"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                      type="number" 
+                      placeholder="Diving" 
+                      id="Diving"
+                      name="Diving"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                    <input 
+                      type="number" 
+                      placeholder="Communication" 
+                      name="Communication"
+                      id="Communication"
+                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                </div>
+                </div>
+              
+                <div class="">
+                  <button 
+                  id="submit_btn"
+                  style="background-color: #55CCA3;"
+                    type="submit" 
+                    class="bg-blue-500 text-white font-medium py-2.5 px-4 rounded-lg w-full  focus:ring-4 focus:ring-blue-300"
+                  >
+                    Add Player
+                  </button>
+                </div>
+                
+              </form>
+  
+        </div>
+        <div class="squad squad_4_3_3 hidden">
+            <div class="frs_4_3_3">
+                <div class="card" position="LW"></div>
+                <div class="card" position="ST">
+                  <div class="card">
+                    <div class="rating_position_logo_flag">
+                        <h4 class="rating">99</h4>
+                        <p>CM</p>
+                    </div>
+                    <div class="playerpic">
+                      <img class="plpic" src="assets/brahim.webp" alt="">
+                    </div>
+                    <!-- <div class="s5">
+                        <p class="name">brahim</p>
+                    </div>
+                    <div class="s6"> 
+                        <p>PAC</p>
+                        <p>SHO</p>
+                        <p>PAS</p>
+                        <p>DRI</p>
+                        <p>DEF</p>
+                        <p>PHY</p>
+                    </div>
+                    <div class="s7">
+                        <p>99</p>
+                        <p>99</p>
+                        <p>99</p>
+                        <p>99</p>
+                        <p>99</p>
+                        <p>99</p>
+                    </div> -->
+                </div>
+                </div>
+                <div class="card" position="RW"></div>
+            </div>
+            <div class="mds_4_3_3">
+                <div class="card" position="LCM"></div>
+                <div class="card" position="CM"></div>
+                <div class="card" position="RCM"></div>
+            </div>
+            <div class="dfs_4_3_3">
+                <div class="card" position="LB"></div>
+                <div class="card" position="LCB"></div>
+                <div class="card" position="RCB"></div>
+                <div class="card" position="RB"></div>
+            </div>
+            <div class="gk_4_3_3">
+                <div class="card" position="GK"></div>
+            </div>
+        </div>
+        
+        <div class="squad squad_4_4_2">
+            <div class="frs_4_4_2">
+                <div class="card" position="ST"></div>
+                <div class="card" position="ST"></div>
+            </div>
+            <div class="mds_4_4_2">
+                <div class="card" position="LM"></div>
+                <div class="card" position="LCM"></div>
+                <div class="card" position="RCM"></div>
+                <div class="card" position="RM"></div>
+            </div>
+            <div class="dfs_4_4_2">
+                <div class="card" position="LB"></div>
+                <div class="card" position="LCB"></div>
+                <div class="card" position="RCB"></div>
+                <div class="card" position="RB"></div>
+            </div>
+            <div class="gk_4_4_2">
+                <div class="card" position="GK"></div>
+            </div>
+        </div>
+        <!-- <div class="squad squad_4_3_3 hidden">
+            <div class="frs_4_3_3">
+                <img src="assets/cardv2.jpg" position="LW" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RW" alt="" class="card">
+            </div>
+            <div class="mds_4_3_3">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+            </div>
+            <div class="dfs_4_3_3">
+                <img src="assets/cardv2.jpg" position="LB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RB" alt="" class="card">
+            </div>
+            <div class="gk_4_3_3">
+                <img src="assets/cardv2.jpg" position="GK" alt="" class="card">
+            </div>
+        </div>
+        
+        <div class="squad squad_4_4_2">
+            <div class="frs_4_4_2">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="ST" alt="" class="card">
+            </div>
+            <div class="mds_4_4_2">
+                <img src="assets/cardv2.jpg" position="LM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CM" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RM" alt="" class="card">
+            </div>
+            <div class="dfs_4_4_2">
+                <img src="assets/cardv2.jpg" position="LB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="CB" alt="" class="card">
+                <img src="assets/cardv2.jpg" position="RB" alt="" class="card">
+            </div>
+            <div class="gk_4_4_2">
+                <img src="assets/cardv2.jpg" position="GK" alt="" class="card">
+            </div>
+        </div> -->
+        <div class="sub">
+         
+            
+        </div>
+    </section>
+    
+</body>
+<script src="script.js"></script>
+
+</html>

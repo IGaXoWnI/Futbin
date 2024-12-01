@@ -49,11 +49,14 @@ document.getElementById("submit_btn").addEventListener("click", () => {
     let player_name = document.getElementById("player-name").value;
     let position = localStorage.getItem("position");
     let player_rating = document.getElementById("player-rating").value;
+    let flag_pic = document.getElementById("nation-image-url").value;
+    let club_pic = document.getElementById("club-image-url").value;
+    let player_pic = document.getElementById("player-image-url").value;
 
     let data_squad = JSON.parse(localStorage.getItem("data_squad") || "[]");
     let data_bench = JSON.parse(localStorage.getItem("data_bench") || "[]");
 
-    const stats = position ;
+
     if(position=== "GK")   {
         reflexes = document.getElementById("Reflexes").value,
         handling= document.getElementById("Handling").value,
@@ -71,7 +74,7 @@ document.getElementById("submit_btn").addEventListener("click", () => {
     };
 
     if(position==="GK"){
-        const player = { name: player_name, rating: player_rating, position : position, stats : [
+        const player = { name: player_name , flag_pic : flag_pic, club_pic:club_pic, player_pic:player_pic, rating: player_rating, position : position, stats : [
             {
                 reflexes : reflexes,
                 handling : handling,
@@ -89,7 +92,7 @@ document.getElementById("submit_btn").addEventListener("click", () => {
         }
         
     }else{
-        const player = { name: player_name, rating: player_rating, position : position, stats : [
+        const player = { name: player_name , flag : flag_pic, club:club_pic, player_pic:player_pic, rating: player_rating, position : position, stats : [
             {
                 pace : pace,
                 shooting : shooting,
@@ -117,152 +120,156 @@ document.getElementById("submit_btn").addEventListener("click", () => {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function renderData() {
     const data_squad = JSON.parse(localStorage.getItem("data_squad") || "[]");
     const data_bench = JSON.parse(localStorage.getItem("data_bench") || "[]");
-
     const cards = document.querySelectorAll(".card");
     const bench_container = document.querySelector(".sub");
+    function renderData() {
 
 
-    bench_container.innerHTML = "";
+    
 
-    data_squad.forEach((squad_player) => {
-        let position = squad_player.position;
-       cards.forEach((card)=>{
-        if(card.getAttribute("position") === position){
-            if(position === "GK"){
-                card.innerHTML = `
-                <div class="card">
-                    <div class="s1">
-                        <h1 class="rating">${squad_player.rating}</h1>
-                        <p>${squad_player.position}</p>
-                    </div>
-                    <img class="plpic" src="assets/brahim.webp" alt="">
-                    <div class="s5">
-                        <p class="name">${squad_player.name}</p>
-                    </div>
-                    <div class="s6">
-                        <p>Ref</p>
-                        <p>Han</p>
-                        <p>Kic</p>
-                        <p>Pos</p>
-                        <p>Div</p>
-                        <p>Com</p>
-                    </div>
-                    <div class="s7">
-                        <p>${squad_player.stats[0].reflexes}</p>
-                        <p>${squad_player.stats[0].handling}</p>
-                        <p>${squad_player.stats[0].kicking}</p>
-                        <p>${squad_player.stats[0].positioning}</p>
-                        <p>${squad_player.stats[0].diving}</p>
-                        <p>${squad_player.stats[0].communication}</p>
-                    </div>
-                </div>`;
 
-            }else{
-                card.innerHTML = `
-                <div class="card">
-                    <div class="s1">
-                        <h1 class="rating">${squad_player.rating}</h1>
-                        <p>${squad_player.position}</p>
-                    </div>
-                    <img class="plpic" src="assets/brahim.webp" alt="">
-                    <div class="s5">
-                        <p class="name">${squad_player.name}</p>
-                    </div>
-                    <div class="s6"> 
-                        <p>PAC</p>
-                        <p>SHO</p>
-                        <p>PAS</p>
-                        <p>DRI</p>
-                        <p>DEF</p>
-                        <p>PHY</p>
-                    </div>
-                    <div class="s7">
-                        <p>${squad_player.stats[0].pace}</p>
-                        <p>${squad_player.stats[0].shooting}</p>
-                        <p>${squad_player.stats[0].passing}</p>
-                        <p>${squad_player.stats[0].dribbling}</p>
-                        <p>${squad_player.stats[0].defence}</p>
-                        <p>${squad_player.stats[0].physique}</p>
-                    </div>
-                </div>`;
-               
-            }
-        }
-       })
-    });
+    
+        
+    
 
-   
-    data_bench.forEach((bench_player) => {
-        let position = bench_player.position;
-        if(position === "GK"){
-                bench_container.innerHTML+=`
+        data_squad.forEach((squad_player) => {
+            let position = squad_player.position;
+            cards.forEach((card) => {
+                if (card.getAttribute("position") === position) {
+                    const stats = position === "GK"
+                        ? 
+                        `
+                            <p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>
+                        `
+                        : 
+                        `
+                            <p>PAC</p><p>SHO</p><p>PAS</p><p>DRI</p><p>DEF</p><p>PHY</p>
+                        `;
+                    const statsValues = position === "GK"
+                        ? 
+                        `
+                            <p>${squad_player.stats[0].reflexes}</p>
+                            <p>${squad_player.stats[0].handling}</p>
+                            <p>${squad_player.stats[0].kicking}</p>
+                            <p>${squad_player.stats[0].positioning}</p>
+                            <p>${squad_player.stats[0].diving}</p>
+                            <p>${squad_player.stats[0].communication}</p>
+                        `
+                        :
+                         `
+                            <p>${squad_player.stats[0].pace}</p>
+                            <p>${squad_player.stats[0].shooting}</p>
+                            <p>${squad_player.stats[0].passing}</p>
+                            <p>${squad_player.stats[0].dribbling}</p>
+                            <p>${squad_player.stats[0].defence}</p>
+                            <p>${squad_player.stats[0].physique}</p>
+                        `;
+    
+                    card.innerHTML = `
                         <div class="card">
-                            <div class="s1">
-                                <h1 class="rating">${bench_player.rating}</h1>
-                                <p>${bench_player.position}</p>
+                            <div class="rating_position_logo_flag">
+                                <p>${squad_player.rating}</p>
+                                <p>${squad_player.position}</p>
+                                <div class="flag_club">
+                                    <img class="club" src="${squad_player.club}" alt="Club Logo">
+                                    <img class="flag" src="${squad_player.flag}" alt="Flag">
+                                </div>
                             </div>
-                            <img class="plpic" src="assets/brahim.webp" alt="">
-                            <div class="s5">
-                                <p class="name">${bench_player.name}</p>
+                            <div class="playerpic">
+                                <img class="plpic" src="${squad_player.player_pic}" alt="Player Image">
                             </div>
-                            <div class="s6">
-                                <p>Ref</p>
-                                <p>Han</p>
-                                <p>Kic</p>
-                                <p>Pos</p>
-                                <p>Div</p>
-                                <p>Com</p>
+                            <div class="name">
+                                <p>${squad_player.name}</p>
                             </div>
-                            <div class="s7">
-                                <p>${bench_player.stats[0].reflexes}</p>
-                                <p>${bench_player.stats[0].handling}</p>
-                                <p>${bench_player.stats[0].kicking}</p>
-                                <p>${bench_player.stats[0].positioning}</p>
-                                <p>${bench_player.stats[0].diving}</p>
-                                <p>${bench_player.stats[0].communication}</p>
-                            </div>
+                            <div class="stats_name">${stats}</div>
+                            <div class="stats_value">${statsValues}</div>
                         </div>`;
-        }else{
-            bench_container.innerHTML+=`
-                <div class="card">
-                    <div class="s1">
-                        <h1 class="rating">${bench_player.rating}</h1>
+                }
+            });
+        });
+    
+
+        data_bench.forEach((bench_player) => {
+            const stats = bench_player.position === "GK"
+                ? 
+                `
+                    <p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>
+                `
+                : 
+                `
+                    <p>PAC</p><p>SHO</p><p>PAS</p><p>DRI</p><p>DEF</p><p>PHY</p>
+                `;
+            const statsValues = bench_player.position === "GK"
+                ?
+                 `
+                    <p>${bench_player.stats[0].reflexes}</p>
+                    <p>${bench_player.stats[0].handling}</p>
+                    <p>${bench_player.stats[0].kicking}</p>
+                    <p>${bench_player.stats[0].positioning}</p>
+                    <p>${bench_player.stats[0].diving}</p>
+                    <p>${bench_player.stats[0].communication}</p>
+                `
+                : `
+                    <p>${bench_player.stats[0].pace}</p>
+                    <p>${bench_player.stats[0].shooting}</p>
+                    <p>${bench_player.stats[0].passing}</p>
+                    <p>${bench_player.stats[0].dribbling}</p>
+                    <p>${bench_player.stats[0].defence}</p>
+                    <p>${bench_player.stats[0].physique}</p>
+                `;
+    
+            bench_container.innerHTML += `
+                <div  class="card card_bench">
+                    <div class="rating_position_logo_flag">
+                        <p>${bench_player.rating}</p>
                         <p>${bench_player.position}</p>
+                        <div class="flag_club">
+                            <img class="club" src="${bench_player.club}" alt="Club Logo">
+                            <img class="flag" src="${bench_player.flag}" alt="Flag">
+                        </div>
                     </div>
-                    <img class="plpic" src="assets/brahim.webp" alt="">
-                    <div class="s5">
-                        <p class="name">${bench_player.name}</p>
+                    <div class="playerpic">
+                        <img class="plpic" src="${bench_player.player_pic}" alt="Player Image">
                     </div>
-                    <div class="s6"> 
-                        <p>PAC</p>
-                        <p>SHO</p>
-                        <p>PAS</p>
-                        <p>DRI</p>
-                        <p>DEF</p>
-                        <p>PHY</p>
+                    <div class="name">
+                        <p>${bench_player.name}</p>
                     </div>
-                    <div class="s7">
-                        <p>${bench_player.stats[0].pace}</p>
-                        <p>${bench_player.stats[0].shooting}</p>
-                        <p>${bench_player.stats[0].passing}</p>
-                        <p>${bench_player.stats[0].dribbling}</p>
-                        <p>${bench_player.stats[0].defence}</p>
-                        <p>${bench_player.stats[0].physique}</p>
-                    </div>
+                    <div class="stats_name">${stats}</div>
+                    <div class="stats_value">${statsValues}</div>
                 </div>`;
-        }
-    });
-}
+        });
+
+
+        
+        
+
+       
+        
+    }
 
 
 
 
 
+let cards_bench = localStorage.getItem("cards_bench");
+console.log(cards_bench);
 
 
 
 document.addEventListener("DOMContentLoaded", renderData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

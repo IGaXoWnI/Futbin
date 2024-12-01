@@ -16,44 +16,72 @@
         </div>
     </header>
     <section class="main">
-        <div class="form">
-            <div class="flex justify-between items-center ">
-                <h1 class="text-white text-2xl font-regular text-center mb-1 ">
-                    Build Your Player
-                </h1>
-                <div>
-                    <select 
-                      id="squad-formation" 
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    >
-                      <option value="">Squad</option>
-                      <option value="4-3-3">4-3-3</option>
-                      <option value="4-4-2">4-4-2</option>
-                     
-                    </select>
-                  </div>
+      <div class="form">
+        <div class="flex justify-between items-center ">
+            <h1 class="text-white text-2xl font-regular text-center mb-1">
+                Build Your Player
+            </h1>
+            <div>
+                <select 
+                  id="squad-formation" 
+                  class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Squad</option>
+                  <option value="4-3-3">4-3-3</option>
+                  <option value="4-4-2">4-4-2</option>
+                </select>
             </div>
-
-            <form class="max-w-md mx-auto  space-y-4">
-+                <div>
-                  <label for="player-name" class="block text-white font-medium mb-2">Player Name</label>
-                  <input 
+        </div>
+    
+        <form class="max-w-md mx-auto space-y-4">
+            <div>
+                <label for="player-name" class="block text-white font-medium mb-2">Player Name</label>
+                <input 
                     type="text" 
                     id="player-name" 
                     placeholder="Enter player name"
                     class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
                     required
-                  />
-                </div>
-              
-                <div>
-                  <label for="player-position" class="block text-white font-medium mb-2">Position</label>
-                  <select 
+                />
+            </div>
+            <div>
+                <label for="club-image-url" class="block text-white font-medium mb-2">Club Image URL</label>
+                <input 
+                    type="url" 
+                    id="club-image-url" 
+                    placeholder="Enter club image URL"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                />
+            </div>
+            <div>
+                <label for="nation-image-url" class="block text-white font-medium mb-2">Nation Image URL</label>
+                <input 
+                    type="url" 
+                    id="nation-image-url" 
+                    placeholder="Enter nation image URL"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                />
+            </div>
+            <div>
+                <label for="player-image-url" class="block text-white font-medium mb-2">Player Image URL</label>
+                <input 
+                    type="url" 
+                    id="player-image-url" 
+                    placeholder="Enter player image URL"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                />
+            </div>
+            <div>
+                <label for="player-position" class="block text-white font-medium mb-2">Position</label>
+                <select 
                     id="player-position" 
                     class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
                     required
-                  >
+                >
                     <option value="">Select position</option>
                     <option value="GK">GK</option>
                     <option value="LCB">LCB</option>
@@ -68,14 +96,11 @@
                     <option value="RM">RM</option>
                     <option value="LM">LM</option>
                     <option value="ST">ST</option>
-                    
-                  </select>
-                </div>
-              
-                <div>
-                  <label for="player-rating" class="block text-white font-medium mb-2">Rating</label>
-                  <input 
-                    name="Rating"
+                </select>
+            </div>
+            <div>
+                <label for="player-rating" class="block text-white font-medium mb-2">Rating</label>
+                <input 
                     type="number" 
                     id="player-rating" 
                     placeholder="Enter rating (0-100)" 
@@ -83,127 +108,117 @@
                     max="100"
                     class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
                     required
-                  />
+                />
+            </div>
+            <div>
+                <label for="player-stats" class="block text-white font-medium mb-2">Player Stats</label>
+                <div id="statspl" class="grid grid-cols-2 gap-4">
+                    <input 
+                        id="pace"
+                        type="number" 
+                        placeholder="Pace" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+                    <input 
+                        id="shooting"
+                        type="number" 
+                        placeholder="Shooting" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+                    <input 
+                        id="passing"
+                        type="number" 
+                        placeholder="Passing" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+                    <input 
+                        id="dribbling"
+                        type="number" 
+                        placeholder="Dribbling" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+                    <input 
+                        id="defence"
+                        type="number" 
+                        placeholder="Defence" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+                    <input 
+                        id="physique"
+                        type="number" 
+                        placeholder="Physique" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
                 </div>
-              
-                <div>
-                  <label for="player-stats" class="block text-white font-medium mb-2">Player Stats</label>
-                  <div id="statspl" class="grid grid-cols-2 gap-4">
-                    <input 
-                      id="pace"
-                      name="pace"
-                      type="number" 
-                      placeholder="Pace" 
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                    id="shooting"
-                    name="shooting"
-                      type="number" 
-                      placeholder="Shooting" 
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                    id="passing"
-                    name="passing"
-                      type="number" 
-                      placeholder="Passing" 
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                    id="dribbling"
-                    name="dribbling"
-                      type="number" 
-                      placeholder="Dribbling" 
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                    name="defence"
-                    id="defence"
+                <div id="statsgk" class="hidden grid grid-cols-2 gap-4">
+                  <input 
                     type="number" 
-                    placeholder="Defence" 
+                    placeholder="Reflexes" 
+                    id="Reflexes"
+                    name="Reflexes"
                     class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
                     required
                   />
                   <input 
-                  name="physique"
-                  id="physique"
-                  type="number" 
-                  placeholder="Physique" 
-                  class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-                  </div>
-                  <div id="statsgk" class="hidden grid grid-cols-2 gap-4">
-                    <input 
-                      type="number" 
-                      placeholder="Reflexes" 
-                      id="Reflexes"
-                      name="Reflexes"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                      type="number" 
-                      placeholder="Handling" 
-                      id="Handling"
-                      name="Handling"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                      type="number" 
-                      placeholder="Kicking" 
-                      name="Kicking"
-                      id="Kicking"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                      type="number" 
-                      placeholder="Positioning" 
-                      id="Positioning"
-                      name="Positioning"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                      type="number" 
-                      placeholder="Diving" 
-                      id="Diving"
-                      name="Diving"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                    <input 
-                      type="number" 
-                      placeholder="Communication" 
-                      name="Communication"
-                      id="Communication"
-                      class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                </div>
-                </div>
-              
-                <div class="">
-                  <button 
-                  id="submit_btn"
-                  style="background-color: #55CCA3;"
+                    type="number" 
+                    placeholder="Handling" 
+                    id="Handling"
+                    name="Handling"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="Kicking" 
+                    name="Kicking"
+                    id="Kicking"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="Positioning" 
+                    id="Positioning"
+                    name="Positioning"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="Diving" 
+                    id="Diving"
+                    name="Diving"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="Communication" 
+                    name="Communication"
+                    id="Communication"
+                    class="bg-gray-800 text-white border border-gray-600 rounded-lg p-2.5 w-full focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+              </div>
+            </div>
+            <div>
+                <button 
+                    id="submit_btn"
+                    style="background-color: #55CCA3;"
                     type="submit" 
-                    class="bg-blue-500 text-white font-medium py-2.5 px-4 rounded-lg w-full  focus:ring-4 focus:ring-blue-300"
-                  >
+                    class="bg-blue-500 text-white font-medium py-2.5 px-4 rounded-lg w-full focus:ring-4 focus:ring-blue-300"
+                >
                     Add Player
-                  </button>
-                </div>
-                
-              </form>
-  
-        </div>
+                </button>
+            </div>
+        </form>
+    </div>
         <div class="squad squad_4_3_3 hidden">
             <div class="frs_4_3_3">
                 <div class="card" position="LW"></div>
@@ -290,8 +305,8 @@
                 <img src="assets/cardv2.jpg" position="GK" alt="" class="card">
             </div>
         </div> -->
-        <div class="sub ">
-     
+        <div class="sub">
+         
             
         </div>
     </section>
