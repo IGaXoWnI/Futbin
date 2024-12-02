@@ -15,9 +15,11 @@
     display: grid;
     grid-template-columns: repeat(16,1fr);
     grid-template-rows: repeat(21,1fr);
+    cursor: pointer;
 }
 
 .card .rating_position_logo_flag{
+    padding-top: 10px;
     text-align: center;
     grid-column: 3/6;
     grid-row: 5/13;
@@ -40,7 +42,7 @@
     width: auto; 
 }
 .card .playerpic{
-
+    
     object-fit: contain;
     grid-column: 6/14;
     grid-row: 6/15;
@@ -51,6 +53,16 @@
 .card .playerpic img{
     height: 100%;
     width: auto;
+}
+.card .delete_icon{
+    grid-column: 13/16;
+    grid-row: 5/6;
+    cursor: pointer;
+}
+.card .edit_icon{
+    grid-column: 10/13;
+    grid-row: 5/6;
+    cursor: pointer;    
 }
 
 .card .name{
@@ -346,7 +358,12 @@ header .icons {
     .card .rating_position_logo_flag{
         padding-left: 15px;
         padding-top: 10px;
+
     }
+    .card .rating_position_logo_flag p{
+        font-size: 12px;
+    }
+    
 
     .dfs_4_3_3 , .dfs_4_4_2{
         gap: 0px;
@@ -396,4 +413,11 @@ header .icons {
     .dfs_4_3_3 , .dfs_4_4_2{
         gap: 0;
     }
+    
+}
+
+
+.scalee {
+    transform: scale(1.25);  
+    transition: transform 0.3s ease; 
 }
