@@ -315,6 +315,7 @@ header .icons {
         gap: 40px;
     }
     .card{
+     
         height: 25vh;
         width:20vh;
         background-image: url(assets/empty_card.png);

@@ -97,12 +97,12 @@ document.getElementById("submit_btn").addEventListener("click", () => {
         return;
     }
 
-    if (!/^[A-Za-z\s-]+$/.test(player_name)) {
-        alert("Player name should only contain letters, spaces, and hyphens");
+    if (!/^[A-Za-z\s]+$/.test(player_name)) {
+        alert("Player name should only contain letters and spaces");
         return;
     }
 
-    if (isNaN(player_rating) || player_rating < 0 || player_rating > 100) {
+    if (player_rating < 0 || player_rating > 100) {
         alert("Rating must be a number between 0 and 99");
         return;
     }
@@ -173,10 +173,12 @@ function renderData() {
         cards.forEach((card) => {
             if (card.getAttribute("position") === position) {
                 const stats = position === "GK" ?
-                    `<p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>` :
+                    `<p>Ref</p><p>Han</p><p>Kic</p><p>Pos</p><p>Div</p><p>Com</p>` 
+                    :
                     `<p>PAC</p><p>SHO</p><p>PAS</p><p>DRI</p><p>DEF</p><p>PHY</p>`;
                 const statsValues = position === "GK" ?
-                    `<p>${squad_player.stats[0].reflexes}</p><p>${squad_player.stats[0].handling}</p><p>${squad_player.stats[0].kicking}</p><p>${squad_player.stats[0].positioning}</p><p>${squad_player.stats[0].diving}</p><p>${squad_player.stats[0].communication}</p>` :
+                    `<p>${squad_player.stats[0].reflexes}</p><p>${squad_player.stats[0].handling}</p><p>${squad_player.stats[0].kicking}</p><p>${squad_player.stats[0].positioning}</p><p>${squad_player.stats[0].diving}</p><p>${squad_player.stats[0].communication}</p>`
+                     :
                     `<p>${squad_player.stats[0].pace}</p><p>${squad_player.stats[0].shooting}</p><p>${squad_player.stats[0].passing}</p><p>${squad_player.stats[0].dribbling}</p><p>${squad_player.stats[0].defence}</p><p>${squad_player.stats[0].physique}</p>`;
                 card.innerHTML = `
                     <div class="card">
