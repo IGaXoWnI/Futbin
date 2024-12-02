@@ -23,7 +23,42 @@ const squad_4_4_2 = document.querySelector(".squad_4_4_2");
 
 squad_dropdown.addEventListener("change", () => {
     let squad_value = squad_dropdown.value;
+    let data_squad = JSON.parse(localStorage.getItem("data_squad") || "[]");
 
+    
+    if (squad_value === "4-3-3") {
+        
+        let ssPlayer = data_squad.find(player => player.position === "SS");
+        if (ssPlayer) {
+            ssPlayer.position = "RW";
+        }
+
+        
+        let lmPlayer = data_squad.find(player => player.position === "LM");
+        if (lmPlayer) {
+            lmPlayer.position = "LW";
+        }
+    }
+
+    
+    if (squad_value === "4-4-2") {
+        
+        let rwPlayer = data_squad.find(player => player.position === "RW");
+        if (rwPlayer) {
+            rwPlayer.position = "SS";
+        }
+
+        
+        let lwPlayer = data_squad.find(player => player.position === "LW");
+        if (lwPlayer) {
+            lwPlayer.position = "LM";
+        }
+    }
+
+    
+    localStorage.setItem("data_squad", JSON.stringify(data_squad));
+
+    
     if (squad_value === "4-3-3") {
         localStorage.setItem("selected_squad", "4-3-3");
         squad_4_3_3.classList.remove("hidden");
@@ -33,6 +68,8 @@ squad_dropdown.addEventListener("change", () => {
         squad_4_3_3.classList.add("hidden");
         squad_4_4_2.classList.remove("hidden");
     }
+
+    location.reload();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
